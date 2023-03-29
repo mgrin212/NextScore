@@ -5,7 +5,8 @@ export default function Document() {
     <Html lang="en">
       <Head >
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto&display=swap" rel="stylesheet" />
       </Head>
       <body>
         <Main />

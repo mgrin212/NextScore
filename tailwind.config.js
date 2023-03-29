@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'jetbrains-mono': ['"JetBrains Mono"', 'monospace'],
+        'roboto': ['"Roboto"', 'sans-serif;']
       },
     },
   },

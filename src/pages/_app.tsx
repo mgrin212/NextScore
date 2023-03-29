@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="font-jetbrains-mono">
+    <div className="font-roboto">
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
