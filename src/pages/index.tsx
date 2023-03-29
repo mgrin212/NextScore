@@ -54,7 +54,7 @@ function ScoresPage() {
             &gt;
           </button>
         </div>
-        <div className="w-full pt-[50px] flex flex-col justify-center items-center">
+        <div className="w-full py-[50px] flex flex-col justify-center items-center">
           <h1>NHL Scores for {date.replaceAll("-", " ").slice(4, 15)}</h1>
           <div className={`scoreboard-wrapper transform ${transitionClasses} w-full`}>
             <Scoreboard date={date} />

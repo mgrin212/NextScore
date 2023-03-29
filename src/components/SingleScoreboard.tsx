@@ -11,6 +11,7 @@ interface SingleScoreboardProps {
 export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => {
   const [gameFeed, setGameFeed] = useState<any>(null);
   const [clicked, setClicked] = useState(false);
+  const [containerHeight, setContainerHeight] = useState('0');
 
   useEffect(() => {
     const fetchGameFeed = async () => {
@@ -25,8 +26,20 @@ export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => 
 
     fetchGameFeed();
   }, [score.id]);
+  const [animationClass, setAnimationClass] = useState('animate-slideDown');
+
   const handleScoreboardClick = async (gameId: number) => {
-    setClicked(!clicked);
+    if (clicked) {
+      setAnimationClass('animate-slideUp');
+      setTimeout(() => {
+        setClicked(false);
+        setContainerHeight('0')
+      }, 200);
+    } else {
+      setAnimationClass('animate-slideDown');
+      setClicked(true);
+      setContainerHeight('auto')
+    }
     try {
       const response = await fetch(`/api/game-feed/${gameId}`);
       const data = await response.json();
@@ -41,7 +54,10 @@ export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => 
     }
 
     return (
-      <div className="scrollbar-hide bg-gray-800 p-4 space-x-2 w-full lg:w-1/3 md:w-1/2 overflow-x-scroll grid grid-flow-col text-white  border-white rounded-md">
+      <div
+        className={animationClass + " h-[" + containerHeight + "] " + " scrollbar-hide z-0 duration-75 bg-gray-800 p-4 space-x-2 w-full lg:w-1/3 md:w-1/2 overflow-x-scroll grid grid-flow-col text-white  border-white rounded-md"}
+        style={{ height: containerHeight, transition: 'height 400ms' }}
+      >
         {gameFeed.liveData && gameFeed.liveData.plays.allPlays
           .filter((play: any) => play.result.eventTypeId === 'GOAL')
           .map((goal: any, index: number) => {
@@ -65,6 +81,7 @@ export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => 
                 shotType={shotType}
                 special={special}
                 team={team}
+                className={animationClass}
               />
             );
           })}
