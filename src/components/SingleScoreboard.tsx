@@ -34,7 +34,7 @@ export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => 
       setTimeout(() => {
         setClicked(false);
         setContainerHeight('0')
-      }, 200);
+      }, 100);
     } else {
       setAnimationClass('animate-slideDown');
       setClicked(true);
@@ -56,7 +56,7 @@ export const SingleScoreboard: React.FC<SingleScoreboardProps> = ({ score }) => 
     return (
       <div
         className={animationClass + " h-[" + containerHeight + "] " + " scrollbar-hide z-0 duration-75 bg-gray-800 p-4 space-x-2 w-full lg:w-1/3 md:w-1/2 overflow-x-scroll grid grid-flow-col text-white  border-white rounded-md"}
-        style={{ height: containerHeight, transition: 'height 400ms' }}
+        style={{ height: containerHeight, transition: 'height 200ms' }}
       >
         {gameFeed.liveData && gameFeed.liveData.plays.allPlays
           .filter((play: any) => play.result.eventTypeId === 'GOAL')

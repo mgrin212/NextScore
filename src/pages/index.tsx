@@ -19,10 +19,10 @@ function ScoresPage() {
     const currentDate = new Date(date);
 
     if (direction === 'left') {
-      setTransitionClasses('duration-300 ease-in-out translate-x-full');
+      setTransitionClasses('duration-200 ease-in-out translate-x-full');
       currentDate.setDate(currentDate.getDate() - 1);
     } else if (direction === 'right') {
-      setTransitionClasses('duration-300 ease-in-out -translate-x-full');
+      setTransitionClasses('duration-200 ease-in-out -translate-x-full');
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
@@ -30,7 +30,7 @@ function ScoresPage() {
     setDate(newDate);
     setTimeout(() => {
       setTransitionClasses('');
-    }, 300);
+    }, 170);
   }
 
 
