@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Scoreboard from '../components/Scoreboard';
+import Link from 'next/link';
 
 function formatDate(): string {
   const [month, day, year] = new Date().toLocaleDateString().split('/');
@@ -54,10 +55,14 @@ function ScoresPage() {
           </button>
         </div>
         <div className="w-full pt-[50px] flex flex-col justify-center items-center">
-          <h1>NHL Scores for {new Date(date).toLocaleDateString().slice(0, 15)}</h1>
+          <h1>NHL Scores for {date.replaceAll("-", " ").slice(4, 15)}</h1>
           <div className={`scoreboard-wrapper transform ${transitionClasses} w-full`}>
             <Scoreboard date={date} />
           </div>
+        </div>
+        <div className="w-full flex flex-row fixed z-50 bottom-0 bg-black h-[50px] text-center text-xl">
+          <Link href="/" className=" bg-gray-500 text-white rounded w-full p-2 ml-2">Scores</Link>
+          <Link href="/standings" className=" bg-gray-500 text-white rounded w-full p-2 ml-2"> Standings </Link>
         </div>
       </div>
     </div>

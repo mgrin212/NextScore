@@ -22,7 +22,7 @@ export default function StandingsTable({ title, standings }: StandingsTableProps
         </thead>
         <tbody>
           {standings.map((standing) => (
-            <tr key={standing.team.id}>
+            <tr key={standing.team.id + standing.points + title}>
               <td>{standing.team.name}</td>
               <td>{standing.gamesPlayed}</td>
               <td>{standing.points}</td>
